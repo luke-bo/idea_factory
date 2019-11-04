@@ -10,6 +10,14 @@
   </head>
 
   <body>
+      <div class="container-fluid">
+          <nav class="navbar navbar-light bg-light">
+              <a class="navbar-brand" href="/">Idea Factory</a>
+              <div class="ml-auto d-flex flex-row">
+                <div class="nav-item nav-link"><%= link_to 'New Idea', new_idea_path %></div>
+              </div>
+          </nav>
+      </div>
     <%= yield %>
   </body>
 </html>
