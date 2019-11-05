@@ -11,7 +11,10 @@ class Ability
       can :manage, Idea do |idea|
         idea.user == user
       end
-      
+
+      can :crud, Review do |review|
+        review.user == user #|| review.idea.user == user
+      end
     #   if user.admin?
     #     can :manage, :all
     #   else

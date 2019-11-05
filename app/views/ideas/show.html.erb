@@ -3,7 +3,7 @@
 <p><%= @idea.description %></p>
 
 <p><%= @idea.created_at %></p>
-<p>Created By <%= @idea.user.first_name + ' ' + @idea.user.last_name %></p>
+<p>Created By <%= @idea.user.full_name %></p>
 
 
 <% if can? :edit, @idea %>
@@ -11,4 +11,23 @@
 <% end %>
 <% if can? :destroy, @idea %>
 <%= link_to "Delete", idea_path(@idea), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
+
+<hr>
+
+<%= @review.errors.full_messages.join(', ') %>
+<%= form_for [@idea, @review] do |f| %>
+  <%= f.text_area :body %>
+  <%= f.submit %>
+<% end %>
+
+<% @idea.reviews.each do |review| %>
+  <%= review.body %>
+  <% if can? :crud, review %>
+    <%= link_to 'Delete', [@idea, review],
+                          method: :delete,  
+                          data: { confirm: 'Are you sure?' } %> 
+  <% end %>
+
+  <hr>
 <% end %>
