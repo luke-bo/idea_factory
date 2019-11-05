@@ -1,9 +1,11 @@
-<h1>Ideas</h1>
-
-<% @ideas.each do |idea| %>
-    <h2><%= link_to idea.title, idea_path(idea.id) %></h2>
-    <section><%= idea.description %></section>
-    <hr>
-<% end %>
+<div class="container-fluid">
+    <% @ideas.each do |idea| %>
+        <h2><%= link_to idea.title, idea_path(idea.id) %></h2>
+        <section><%= idea.description %></section>
+        <p>Created By <%= idea.user.first_name + ' ' + idea.user.last_name %></p>
+    
+        <hr>
+    <% end %>
+</div>
 
 
