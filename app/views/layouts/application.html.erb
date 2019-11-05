@@ -10,6 +10,25 @@
   </head>
 
   <body>
+      <div class="container-fluid">
+          <nav class="navbar navbar-light bg-light">
+              <a class="navbar-brand" href="/">Idea Factory</a>
+              <div class="ml-auto d-flex flex-row">
+                <div class="nav-item nav-link"><%= link_to 'New Idea', new_idea_path %></div>
+                <div class="nav-item nav-link">
+                  <% if user_signed_in? %>
+                    Hello <%= current_user.first_name %>,
+                    <%= link_to "Logout", session_path, method: :delete,
+                                                      data: {confirm: "are you sure you want to log out?"}%>
+                  <% else %>
+                    <%= link_to "Login", new_session_path %> |
+                    <%= link_to "Sign Up", new_user_path %>
+                  <% end %>
+                </div>
+              
+                </div>
+          </nav>
+      </div>
     <%= yield %>
   </body>
 </html>
